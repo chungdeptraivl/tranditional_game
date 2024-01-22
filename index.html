@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò chơi dân gian truyền thống vào dịp tết</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/tailwind_button.css">
+</head>
+
+<body>
+    <audio id="myAudio" style="display: none;">
+        <source src="./assets/Nhac-Xo-So-Remix-DJ-Troll.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+      </audio>
+    <div class="container">
+        <h1 style="text-align: center; padding-top: 20px">Trò chơi dân gian vào dịp tết </h1>
+        <div class="wrapper">
+            <div class="dish">
+                <div class="dish_main">
+                    <ul>
+                        <li>
+                            <img class="lucky_card" src="./assets/imgs/bau_page-0001.jpg" alt="">
+                        </li>
+                        <li>
+                            <img class="lucky_card" src="./assets/imgs/ca_page-0001.jpg" alt="">
+                        </li>
+                        <li>
+                            <img class="lucky_card" src="./assets/imgs/tom_page-0001.jpg" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bowl action_bowl">
+            </div>
+            <div style="display:flex" class="nut">
+                <button class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg
+                            border-blue-600
+                            hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
+                            active:border-b-[2px] active:brightness-90 active:translate-y-[2px] cuoc">
+                    Đặt cược
+                </button>
+                <button class="cursor-pointer transition-all text-white px-6 py-2 rounded-lg
+            hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
+            active:border-b-[2px] active:brightness-90 active:translate-y-[2px] lac" onclick="lac()">
+                    Lắc
+                </button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function lac() {
+            var bowl = document.getElementsByClassName('bowl')
+            var imageList = ['bau_page-0001.jpg', 'ga_page-0001.jpg', 'nai_page-0001.jpg', 'tom_page-0001.jpg', 'ca_page-0001.jpg', 'cua_page-0001.jpg']
+            var card = document.getElementsByClassName('lucky_card')
+            var audio = document.getElementById("myAudio");
+            
+
+            bowl[0].classList.remove('action_bowl')
+            bowl[0].classList.add('action')
+            audio.play()
+
+            setTimeout(() => {
+                bowl[0].classList.add('element-to-wiggle')
+            }, 600)
+
+            for (let j = 0; j < 10; j++) {
+                setTimeout(() => {
+                    for (let i = 0; i < 3; i++) {
+                        let r = Math.floor(Math.random() * 6)
+                        card[i].src = './assets/imgs/' + imageList[r]
+                    }
+                }, 2000)
+            }
+
+            setTimeout(() => {
+                bowl[0].classList.remove('element-to-wiggle')
+                bowl[0].classList.add('action_bowl')
+                audio.pause()
+            }, 5000)
+
+        }
+    </script>
+</body>
+
+</html>
